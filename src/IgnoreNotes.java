@@ -8,7 +8,11 @@ public class IgnoreNotes {
 ------- INTRO SCREEN ------
 ------------------------ */
 
-    // — SUBHEADINGS
+    // — MAIN SUBHEADINGS
+
+    // *** ------- TITLE ------- *** //
+
+    // — ALT SUBHEADINGS
 
     // ----- AA ----- //
 

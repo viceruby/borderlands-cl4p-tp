@@ -85,6 +85,8 @@ public class MarcusMunitions {
 ------- MAIN MENU -------
 ---------------------- */
 
+// *** ------- CONSOLE UI ------- *** //
+
         boolean running = true; // "The program is currently running." Controlling the menu.
 
         while (running) { // while loop engages if the program IS running, which is true (above line).
@@ -102,8 +104,12 @@ public class MarcusMunitions {
             // *** READS USER INPUT ***
             String choice = scanner.nextLine();
 
-            // *** OPTIONS (SWITCH CASE) ***
+// *** ------- OPTIONS (SWITCH CASES) ------- *** //
+
             switch (choice.toUpperCase()) { // Without '.toUpperCase()', it would be case sensitive.
+
+// *** ------- DEPOSIT ------- *** //
+
                 case "D": // *** DEPOSIT ***
                     System.out.print("Enter deposit description: ");
                     String description = scanner.nextLine();
@@ -128,6 +134,8 @@ public class MarcusMunitions {
                     transactions.add(t);
                     System.out.println("\nDEPOSITED BLOOD MONEY SUCCESSFULLY.\n");
                     break;
+
+// *** ------- PAYMENTS ------- *** //
 
                 case "P": // *** PAYMENT ***
                     System.out.print("Enter payment description: ");
@@ -177,9 +185,13 @@ public class MarcusMunitions {
                     System.out.println("PAYMENT RECEIVED: " + payment); // *** CONFIRMING ACTION ***
                     break;
 
-                case "L":
-                    // call showLedger() method
+// *** ------- LEDGER ------- *** //
+
+                case "L": // *** LEDGER ***
+                    // insert code here
                     break;
+
+// *** ------- EXIT ------- *** //
 
                 case "X":
                     running = false; // *** HOW THE while loop STOPS ***
@@ -190,6 +202,8 @@ public class MarcusMunitions {
                     System.out.println("Invalid option. Try again.");
             }
         } // while
+
+// *** ------- CLOSING THE SCANNER ------- *** //
 
         scanner.close();
 
