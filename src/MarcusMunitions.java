@@ -1,8 +1,14 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.BufferedReader; // Reads lines from .csv file
+import java.io.BufferedWriter; // Writing and appending new lines
+import java.io.FileReader; // Reads lines from .csv file
+import java.io.FileWriter; // Writing and appending new lines
+import java.io.IOException; // Handles file read/write errors
+import java.io.PrintWriter; // Writing full lines of text
+import java.time.format.DateTimeFormatter; // dtf
+import java.util.ArrayList; // Memory storage
+import java.util.Scanner; // User input from the console
+import java.time.LocalDate; // dtf
+import java.time.LocalTime; // dtf
 
 public class MarcusMunitions {
 
@@ -90,7 +96,7 @@ public class MarcusMunitions {
             System.out.println("[D] DEPOSIT YOUR BLOOD MONEY");
             System.out.println("[P] Make Payment");
             System.out.println("[L] Ledger");
-            System.out.println("[X] Exit");
+            System.out.println("[X] Exit" + "\n");
             System.out.print("Choose an option: ");
 
             // *** READS USER INPUT ***
@@ -98,19 +104,88 @@ public class MarcusMunitions {
 
             // *** OPTIONS (SWITCH CASE) ***
             switch (choice.toUpperCase()) { // Without '.toUpperCase()', it would be case sensitive.
-                case "D":
-                    // call addDeposit() method
+                case "D": // *** DEPOSIT ***
+                    System.out.print("Enter deposit description: ");
+                    String description = scanner.nextLine();
+
+                    System.out.print("Enter vendor: ");
+                    String vendor = scanner.nextLine();
+
+                    System.out.print("Enter amount: ");
+                    double amount = Double.parseDouble(scanner.nextLine());
+
+                    LocalDate date = LocalDate.now();
+                    LocalTime time = LocalTime.now();
+
+                    Transactions t = new Transactions(
+                            date.toString(),
+                            time.toString(),
+                            description,
+                            vendor,
+                            amount
+                    );
+
+                    transactions.add(t);
+                    System.out.println("\nDEPOSITED BLOOD MONEY SUCCESSFULLY.\n");
                     break;
-                case "P":
-                    // call makePayment() method
+
+                case "P": // *** PAYMENT ***
+                    System.out.print("Enter payment description: ");
+                    String paymentDescription = scanner.nextLine();
+
+                    System.out.print("Enter vendor: ");
+                    String paymentVendor = scanner.nextLine();
+
+                    System.out.print("Enter amount (positive number): ");
+                    double paymentAmount;
+                    try {
+                        paymentAmount = Double.parseDouble(scanner.nextLine().trim()); // PROVIDE NOTES HERE
+                    } catch (NumberFormatException nfe) {
+                        System.out.println("Invalid number format. Payment cancelled.");
+                        break; // *** EXITING AND RETURNING TO MENU ***
+                    }
+
+                    paymentAmount = -Math.abs(paymentAmount); // *** AMOUNT MUST BE NEGATIVE ***
+
+                    // *** DATE AND TIME FORMATTING ***
+                    String dateFormat = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE); // YYYY-MM-DD
+                    String timeFormat = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")); // HH:mm:ss
+
+                    // *** CREATING AND STORING THE TRANSACTION ***
+                    Transactions payment = new Transactions(dateFormat, timeFormat, paymentDescription, paymentVendor, paymentAmount);
+                    transactions.add(payment);
+
+                    // *** APPENDING TO THE .CSV FILE ***
+                    // Using try/catch so it doesn't break the program.
+
+                    try (FileWriter fw = new FileWriter("transactions.csv", true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    PrintWriter pw = new PrintWriter(bw)) {
+
+                        // *** FORMAT FOR DOLLAR VALUE ***
+                        String dollarAmount = String.format("%.2f", paymentAmount);
+
+                        // *** BUILD FOR MATCHING .CSV FILE FORMAT ***
+                        String csvFileFormat = dateFormat + "|" + timeFormat + "|" + paymentDescription + "|" + paymentVendor + "|" + dollarAmount;
+
+                        pw.println(csvFileFormat); // *** APPEND THE NEW TRANSACTION ***
+                    } catch (IOException ioe) {
+                        System.out.println("Error: unable to write transaction.");
+                        ioe.printStackTrace();
+                    }
+
+                    System.out.println("PAYMENT RECEIVED: " + payment); // *** CONFIRMING ACTION ***
                     break;
+
                 case "L":
                     // call showLedger() method
                     break;
+
                 case "X":
                     running = false; // *** HOW THE while loop STOPS ***
                     System.out.println("Goodbye!");
                     break;
+
                 default:
                     System.out.println("Invalid option. Try again.");
             }
