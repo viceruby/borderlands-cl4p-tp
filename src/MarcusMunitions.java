@@ -4,11 +4,14 @@ import java.io.FileReader; // Reads lines from .csv file
 import java.io.FileWriter; // Writing and appending new lines
 import java.io.IOException; // Handles file read/write errors
 import java.io.PrintWriter; // Writing full lines of text
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter; // dtf
 import java.util.ArrayList; // Memory storage
+import java.util.List;
 import java.util.Scanner; // User input from the console
 import java.time.LocalDate; // dtf
 import java.time.LocalTime; // dtf
+import java.util.Comparator;
 
 public class MarcusMunitions {
 
@@ -196,7 +199,7 @@ public class MarcusMunitions {
 // *** ------- LEDGER MENU CONSOLE UI ------- *** //
 
                     while (ledgerRunning) {
-                        System.out.println("\nLEDHER");
+                        System.out.println("\nLEDGER");
                         System.out.println("A) All Transactions");
                         System.out.println("D) Deposits");
                         System.out.println("P) Payments");
@@ -210,6 +213,19 @@ public class MarcusMunitions {
 
 // *** ------- LEDGER TRANSACTIONS ------- *** //
 
+                        // *** DESCENDING BY DATE ***
+                        transactions.sort((t1, t2) -> {
+                            LocalDate date1 = LocalDate.parse(t1.getDate());
+                            LocalDate date2 = LocalDate.parse(t2.getDate());
+                            int dateCompare = date2.compareTo(date1);
+                            if (dateCompare != 0) return dateCompare;
+
+                            // *** DESCENDING BY TIME ***
+                            LocalTime time1 = LocalTime.parse(t1.getTime());
+                            LocalTime time2 = LocalTime.parse(t2.getTime());
+                            return time2.compareTo(time1);
+                        });
+
                         switch (ledgerChoice.toUpperCase()) {
                             case "A":
                                 {System.out.println("\nTRANSACTIONS DIALGOUE HERE\n");
@@ -218,27 +234,24 @@ public class MarcusMunitions {
                                 System.out.printf("%-15s %-15s %-30s %-10s %15s%n", // %-LEFT ALIGN + SPACES + %RIGHT ALIGN
                                         "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
 
-                                // ITERATION: NEWEST FIRST (LAST ADDED IS LISTED FIRST)
-                                for (int i = transactions.size() - 1; i >= 0; i--) {
-                                    Transactions transactionsLedger = transactions.get(i);
+                                transactions.stream()
+                                        .sorted((t1, t2) -> {
+                                                LocalDateTime dt1 = LocalDateTime.parse(t1.getDate() + "T" + t1.getTime());
+                                                LocalDateTime dt2 = LocalDateTime.parse(t2.getDate() + "T" + t2.getTime());
+                                                return dt2.compareTo(dt1); // DESCENDING: newest first
+                                        })
+                                        .forEach(t -> {
+                                            // TRUNCATING TIME STAMPS SO IT DOESN'T BLEED
+                                            String timeLedgerAll = t.getTime();
+                                            if (timeLedgerAll.length() > 15) timeLedgerAll = timeLedgerAll.substring(0, 12);
 
-                                    // TRUNCATING TIME STAMPS SO IT DOESN'T BLEED
-                                    String timeLedgerAll = transactionsLedger.getTime();
-                                    if (timeLedgerAll.length() > 15) timeLedgerAll = timeLedgerAll.substring(0, 12);
+                                            // TRUNCATING DESCRIPTION SO IT DOESN'T BLEED
+                                            String descripLedgerAll = t.getDescription();
+                                            if (descripLedgerAll.length() > 30) descripLedgerAll = descripLedgerAll.substring(0, 27) + "...";
 
-                                    // TRUNCATING DESCRIPTION SO IT DOESN'T BLEED
-                                    String descripLedgerAll = transactionsLedger.getDescription();
-                                    if (descripLedgerAll.length() > 30) descripLedgerAll = descripLedgerAll.substring(0, 27) + "...";
-
-                                    System.out.printf("%-15s %-15s %-30s %-10s %15s%n",
-                                        transactionsLedger.getDate(),
-                                        timeLedgerAll, // Not using a getter/setter because we created a new String to truncate length
-                                        descripLedgerAll, // Not using a getter/setter because we created a new String to truncate length
-                                        transactionsLedger.getVendor(),
-                                        transactionsLedger.getAmount()
-                                    );
-
-                                }
+                                            System.out.printf("%-15s %-15s %-30s %-10s %15.2f%n",
+                                                    t.getDate(), timeLedgerAll, descripLedgerAll, t.getVendor(), t.getAmount());
+                                        });
 
                                 break;}
 
@@ -251,30 +264,27 @@ public class MarcusMunitions {
                                 System.out.printf("%-15s %-15s %-30s %-10s %15s%n", // %-LEFT ALIGN + SPACES + %RIGHT ALIGN
                                         "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
 
-                                // ITERATION: NEWEST FIRST (LAST ADDED IS LISTED FIRST)
-                                for (int i = transactions.size() - 1; i >= 0; i--) {
-                                    Transactions transactionsLedger = transactions.get(i);
-                                    if (transactionsLedger.getAmount() > 0) { // DEPOSIT = > POSITIVE!
-
+                                transactions.stream()
+                                        .filter(t -> t.getAmount() > 0)
+                                        .sorted((t1, t2) -> {
+                                            LocalDateTime dt1 = LocalDateTime.parse(t1.getDate() + "T" + t1.getTime());
+                                            LocalDateTime dt2 = LocalDateTime.parse(t2.getDate() + "T" + t2.getTime());
+                                            return dt2.compareTo(dt1);
+                                        })
+                                        .forEach(t -> {
                                         // TRUNCATING TIME STAMPS SO IT DOESN'T BLEED
-                                        String timeLedgerDepo = transactionsLedger.getTime();
+                                        String timeLedgerDepo = t.getTime();
                                         if (timeLedgerDepo.length() > 15)
                                             timeLedgerDepo = timeLedgerDepo.substring(0, 12);
 
                                         // TRUNCATING DESCRIPTION SO IT DOESN'T BLEED
-                                        String descripLedgerDepo = transactionsLedger.getDescription();
+                                        String descripLedgerDepo = t.getDescription();
                                         if (descripLedgerDepo.length() > 30)
                                             descripLedgerDepo = descripLedgerDepo.substring(0, 27) + "...";
 
-                                        System.out.printf("%-15s %-15s %-30s %-10s %15.2f%n", // %15.2f%n= RIGHT ALIGN FLOAT/DOUBLE WITH 2 DECIMAL PLACES + NEW LINE
-                                                transactionsLedger.getDate(),
-                                                timeLedgerDepo, // Not using a getter/setter because we created a new String to truncate length
-                                                descripLedgerDepo, // Not using a getter/setter because we created a new String to truncate length
-                                                transactionsLedger.getVendor(),
-                                                transactionsLedger.getAmount());
-                                    }
-
-                                }
+                                        System.out.printf("%-15s %-15s %-30s %-10s %15.2f%n",
+                                                t.getDate(), timeLedgerDepo, descripLedgerDepo, t.getVendor(), t.getAmount());
+                                    });
 
                                 break;}
 
@@ -287,30 +297,27 @@ public class MarcusMunitions {
                                 System.out.printf("%-15s %-15s %-30s %-10s %15s%n", // %-LEFT ALIGN + SPACES + %RIGHT ALIGN
                                         "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
 
-                                // ITERATION: NEWEST FIRST (LAST ADDED IS LISTED FIRST)
-                                for (int i = transactions.size() - 1; i >= 0; i--) {
-                                    Transactions transactionsLedger = transactions.get(i);
-                                    if (transactionsLedger.getAmount() < 0) { // PAYMENTS = < NEGATIVE!
+                                transactions.stream()
+                                        .filter(t -> t.getAmount() < 0)
+                                        .sorted((t1, t2) -> {
+                                            LocalDateTime dt1 = LocalDateTime.parse(t1.getDate() + "T" + t1.getTime());
+                                            LocalDateTime dt2 = LocalDateTime.parse(t2.getDate() + "T" + t2.getTime());
+                                            return dt2.compareTo(dt1);
+                                        })
+                                        .forEach(t -> {
+                                            // TRUNCATING TIME STAMPS SO IT DOESN'T BLEED
+                                            String timeLedgerPayments = t.getTime();
+                                            if (timeLedgerPayments.length() > 15)
+                                                timeLedgerPayments = timeLedgerPayments.substring(0, 12);
 
-                                        // TRUNCATING TIME STAMPS SO IT DOESN'T BLEED
-                                        String timeLedgerPayments = transactionsLedger.getTime();
-                                        if (timeLedgerPayments.length() > 15)
-                                            timeLedgerPayments = timeLedgerPayments.substring(0, 12);
+                                            // TRUNCATING DESCRIPTION SO IT DOESN'T BLEED
+                                            String descripLedgerPayments = t.getDescription();
+                                            if (descripLedgerPayments.length() > 30)
+                                                descripLedgerPayments = descripLedgerPayments.substring(0, 27) + "...";
 
-                                        // TRUNCATING DESCRIPTION SO IT DOESN'T BLEED
-                                        String descripLedgerPayments = transactionsLedger.getDescription();
-                                        if (descripLedgerPayments.length() > 30)
-                                            descripLedgerPayments = descripLedgerPayments.substring(0, 27) + "...";
-
-                                        System.out.printf("%-15s %-15s %-30s %-10s %15.2f%n", // %15.2f%n= RIGHT ALIGN FLOAT/DOUBLE WITH 2 DECIMAL PLACES + NEW LINE
-                                                transactionsLedger.getDate(),
-                                                timeLedgerPayments, // Not using a getter/setter because we created a new String to truncate length
-                                                descripLedgerPayments, // Not using a getter/setter because we created a new String to truncate length
-                                                transactionsLedger.getVendor(),
-                                                transactionsLedger.getAmount());
-                                    }
-
-                                }
+                                        System.out.printf("%-15s %-15s %-30s %-10s %15.2f%n",
+                                                t.getDate(), timeLedgerPayments, descripLedgerPayments, t.getVendor(), t.getAmount());
+                                    });
 
                                 break;}
 
@@ -319,7 +326,7 @@ public class MarcusMunitions {
 --------------------------- */
 
                             case "R": // *** LEDGER REPORTS ***
-                                {System.out.println("REPORTS DIALOGUE HERE");
+                                {System.out.println("\nREPORTS DIALOGUE HERE");
 
                                     boolean reportsRunning = true;
 
@@ -343,88 +350,103 @@ public class MarcusMunitions {
 
                                         switch (reportsOptions.toUpperCase()) {
                                             case "1": {
-                                                System.out.println("📅 Month-to-Date Report");
+                                                System.out.println("\n📅 Month-to-Date Report\n");
 
                                                 LocalDate today = LocalDate.now(); // *** SYSTEM CLOCK ***
                                                 int currentMonth = today.getMonthValue();
                                                 int currentYear = today.getYear();
 
-                                                System.out.printf("%-15s %-15s %-30s %-10s %15s%n",
-                                                        "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
+                                                printTransactionHeader();
 
-                                                for (Transactions t : transactions) {
-                                                    LocalDate transactionDate = LocalDate.parse(t.getDate()); // *** LOCALDATE OBJ ***
-
-                                                    if (transactionDate.getMonthValue() == currentMonth &&
-                                                            transactionDate.getYear() == currentYear) { // *** COMPARES IF MONTH AND YEAR ARE THE SAME. IF SO: ***
-
-                                                        System.out.printf("%-15s %-15s %-30s %-15s %15.2f%n",
-                                                                t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
-                                                    }
-                                                }
-
+                                                transactions.stream()
+                                                        .filter(t -> {
+                                                            LocalDate date = LocalDate.parse(t.getDate());
+                                                            return date.getMonthValue() == currentMonth && date.getYear() == currentYear;
+                                                        })
+                                                        .sorted((t1, t2) -> LocalDateTime.parse(t2.getDate() + "T" + t2.getTime())
+                                                                .compareTo(LocalDateTime.parse(t1.getDate() + "T" + t1.getTime())))
+                                                        .forEach(t -> printTransactionRow(t));
                                                 break;}
 
 // *** ------- REPORTS BY PREVIOUS MONTH ------- *** //
 
                                             case "2":{
-                                                System.out.println("📅 Previous Month Report");
+                                                System.out.println("\n📅 Previous Month Report\n");
 
                                                 LocalDate today = LocalDate.now();
                                                 LocalDate lastMonth = today.minusMonths(1); // *** REDUCES MONTH BY 1 ***
                                                 int previousMonth = lastMonth.getMonthValue();
                                                 int previousYear = lastMonth.getYear();
 
-                                                System.out.printf("%-15s %-15s %-30s %-10s %15s%n",
-                                                        "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
+                                                printTransactionHeader();
 
-                                                for (Transactions t : transactions) {
-                                                    LocalDate transactionDate = LocalDate.parse(t.getDate());
-
-                                                    if (transactionDate.getMonthValue() == previousMonth &&
-                                                            transactionDate.getYear() == previousYear) { // == COMPARISON OPERANDS FOR IF/THEN
-
-                                                        System.out.printf("%-15s %-15s %-30s %-15s %15.2f%n",
-                                                                t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
-                                                    }
-                                                }
+                                                transactions.stream()
+                                                        .filter(t -> {
+                                                            LocalDate date = LocalDate.parse(t.getDate());
+                                                            return date.getMonthValue() == previousMonth && date.getYear() == previousYear;
+                                                        })
+                                                        .sorted((t1, t2) -> LocalDateTime.parse(t2.getDate() + "T" + t2.getTime())
+                                                                .compareTo(LocalDateTime.parse(t1.getDate() + "T" + t1.getTime())))
+                                                        .forEach(t -> printTransactionRow(t));
 
                                                 break;}
 
 // *** ------- REPORTS BY YEAR TO DATE ------- *** //
 
-                                            case "3":{
-                                                System.out.println("📅 Year-to-Date Report");
+                                            case "3": {
+                                                System.out.println("\n📅 Year-to-Date Report\n");
 
-                                                // Code goes here
+                                                LocalDate today = LocalDate.now();
+                                                LocalDate startOfYear = LocalDate.of(today.getYear(), 1, 1);
 
+                                                printTransactionHeader();
+
+                                                transactions.stream()
+                                                        .filter(t -> {
+                                                            LocalDate date = LocalDate.parse(t.getDate());
+                                                            return !date.isBefore(startOfYear) && !date.isAfter(today);
+                                                        })
+                                                        .sorted((t1, t2) -> LocalDateTime.parse(t2.getDate() + "T" + t2.getTime())
+                                                                .compareTo(LocalDateTime.parse(t1.getDate() + "T" + t1.getTime())))
+                                                        .forEach(t -> printTransactionRow(t));
                                                 break;}
 
 // *** ------- REPORTS BY PREVIOUS YEAR ------- *** //
 
                                             case "4":{
-                                                System.out.println("📅 Previous Year Report");
+                                                System.out.println("\n📅 Previous Year Report\n");
 
-                                                // Code goes here
+                                                LocalDate today = LocalDate.now();
+                                                LocalDate startOfPreviousYear = LocalDate.of(today.getYear() - 1, 1, 1); // *** DEFINES START OF YEAR AS JAN 1 ***
+                                                LocalDate endOfPreviousYear = LocalDate.of(today.getYear() - 1, 12, 31);// *** DEFINES END OF YEAR AS DEC 31 ***
+
+                                                printTransactionHeader();
+
+                                                transactions.stream()
+                                                        .filter(t -> {
+                                                            LocalDate date = LocalDate.parse(t.getDate());
+                                                            return !date.isBefore(startOfPreviousYear) && !date.isAfter(endOfPreviousYear);
+                                                        })
+                                                        .sorted((t1, t2) -> LocalDateTime.parse(t2.getDate() + "T" + t2.getTime())
+                                                                .compareTo(LocalDateTime.parse(t1.getDate() + "T" + t1.getTime())))
+                                                        .forEach(t -> printTransactionRow(t));
 
                                                 break;}
 
 // *** ------- VENDOR SEARCH ------- *** //
 
                                             case "5":{
-                                                System.out.print("Enter vendor name to search: ");
+                                                System.out.print("\nEnter vendor name to search: \n");
                                                 String searchVendor = scanner.nextLine().toLowerCase();
-                                                System.out.println("\n--- TRANSACTIONS FROM " + searchVendor.toUpperCase() + " ---\n");
 
-                                                System.out.printf("%-15s %-15s %-30s %-10s %15s%n",
-                                                        "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
+                                                printTransactionHeader();
 
-                                                for (Transactions t : transactions) {
-                                                    if (t.getVendor().toLowerCase().contains(searchVendor)) {
-                                                        System.out.printf("%-15s %-15s %-30s %-10s %15.2f%n",
-                                                                t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
-                                                    }
-                                                }
+                                                transactions.stream()
+                                                        .filter(t -> t.getVendor().toLowerCase().contains(searchVendor))
+                                                        .sorted((t1, t2) -> LocalDateTime.parse(t2.getDate() + "T" + t2.getTime())
+                                                                .compareTo(LocalDateTime.parse(t1.getDate() + "T" + t1.getTime())))
+                                                        .forEach(t -> printTransactionRow(t));
+
                                                 break;}
 
 // *** ------- LEDGER REPORTS MENU EXIT ------- *** //
@@ -434,7 +456,7 @@ public class MarcusMunitions {
                                                 break;}
 
                                             default:
-                                                System.out.println("Invalid option. Try again!");
+                                                System.out.println("/nInvalid option. Try again!");
                                                 break;
                                         }
                                     }
@@ -471,5 +493,22 @@ public class MarcusMunitions {
         scanner.close();
 
     } // main method
+
+    private static void printTransactionHeader() {
+        System.out.printf("%-15s %-15s %-30s %-10s %15s%n",
+                "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
+    }
+
+    private static void printTransactionRow(Transactions t) {
+        String description = t.getDescription();
+        if (description.length() > 30) description = description.substring(0, 27) + "...";
+
+        System.out.printf("%-15s %-15s %-30s %-10s %15.2f%n",
+                t.getDate(),
+                t.getTime(),
+                description,
+                t.getVendor(),
+                t.getAmount());
+    }
 
 } // class
