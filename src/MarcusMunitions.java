@@ -314,10 +314,131 @@ public class MarcusMunitions {
 
                                 break;}
 
-// *** ------- LEDGER REPORTS ------- *** //
+/* ---------------------------
+------- LEDGER REPORTS -------
+--------------------------- */
 
-                            case "R":
+                            case "R": // *** LEDGER REPORTS ***
                                 {System.out.println("REPORTS DIALOGUE HERE");
+
+                                    boolean reportsRunning = true;
+
+ // *** ------- LEDGER REPORTS MENU CONSOLE UI ------- *** //
+
+                                    while (reportsRunning) {
+                                        System.out.println("\n--- REPORTS MENU ---");
+                                        System.out.println("1) Month to Date");
+                                        System.out.println("2) Previous Month");
+                                        System.out.println("3) Year to Date");
+                                        System.out.println("4) Previous Year");
+                                        System.out.println("5) Search by Vendor");
+                                        System.out.println("X) Back to Ledger Menu");
+                                        System.out.print("\nChoose an option: ");
+
+                                        String reportsOptions = scanner.nextLine();
+
+// *** ------- LEDGER REPORTS MENU OPTIONS (SWITCH CASES) ------- *** //
+
+// *** ------- REPORTS BY MONTH TO DATE ------- *** //
+
+                                        switch (reportsOptions.toUpperCase()) {
+                                            case "1": {
+                                                System.out.println("📅 Month-to-Date Report");
+
+                                                LocalDate today = LocalDate.now(); // *** SYSTEM CLOCK ***
+                                                int currentMonth = today.getMonthValue();
+                                                int currentYear = today.getYear();
+
+                                                System.out.printf("%-15s %-15s %-30s %-10s %15s%n",
+                                                        "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
+
+                                                for (Transactions t : transactions) {
+                                                    LocalDate transactionDate = LocalDate.parse(t.getDate()); // *** LOCALDATE OBJ ***
+
+                                                    if (transactionDate.getMonthValue() == currentMonth &&
+                                                            transactionDate.getYear() == currentYear) { // *** COMPARES IF MONTH AND YEAR ARE THE SAME. IF SO: ***
+
+                                                        System.out.printf("%-15s %-15s %-30s %-15s %15.2f%n",
+                                                                t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                                                    }
+                                                }
+
+                                                break;}
+
+// *** ------- REPORTS BY PREVIOUS MONTH ------- *** //
+
+                                            case "2":{
+                                                System.out.println("📅 Previous Month Report");
+
+                                                LocalDate today = LocalDate.now();
+                                                LocalDate lastMonth = today.minusMonths(1); // *** REDUCES MONTH BY 1 ***
+                                                int previousMonth = lastMonth.getMonthValue();
+                                                int previousYear = lastMonth.getYear();
+
+                                                System.out.printf("%-15s %-15s %-30s %-10s %15s%n",
+                                                        "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
+
+                                                for (Transactions t : transactions) {
+                                                    LocalDate transactionDate = LocalDate.parse(t.getDate());
+
+                                                    if (transactionDate.getMonthValue() == previousMonth &&
+                                                            transactionDate.getYear() == previousYear) { // == COMPARISON OPERANDS FOR IF/THEN
+
+                                                        System.out.printf("%-15s %-15s %-30s %-15s %15.2f%n",
+                                                                t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                                                    }
+                                                }
+
+                                                break;}
+
+// *** ------- REPORTS BY YEAR TO DATE ------- *** //
+
+                                            case "3":{
+                                                System.out.println("📅 Year-to-Date Report");
+
+                                                // Code goes here
+
+                                                break;}
+
+// *** ------- REPORTS BY PREVIOUS YEAR ------- *** //
+
+                                            case "4":{
+                                                System.out.println("📅 Previous Year Report");
+
+                                                // Code goes here
+
+                                                break;}
+
+// *** ------- VENDOR SEARCH ------- *** //
+
+                                            case "5":{
+                                                System.out.print("Enter vendor name to search: ");
+                                                String searchVendor = scanner.nextLine().toLowerCase();
+                                                System.out.println("\n--- TRANSACTIONS FROM " + searchVendor.toUpperCase() + " ---\n");
+
+                                                System.out.printf("%-15s %-15s %-30s %-10s %15s%n",
+                                                        "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
+
+                                                for (Transactions t : transactions) {
+                                                    if (t.getVendor().toLowerCase().contains(searchVendor)) {
+                                                        System.out.printf("%-15s %-15s %-30s %-10s %15.2f%n",
+                                                                t.getDate(), t.getTime(), t.getDescription(), t.getVendor(), t.getAmount());
+                                                    }
+                                                }
+                                                break;}
+
+// *** ------- LEDGER REPORTS MENU EXIT ------- *** //
+
+                                            case "X":{
+                                                reportsRunning = false;
+                                                break;}
+
+                                            default:
+                                                System.out.println("Invalid option. Try again!");
+                                                break;
+                                        }
+                                    }
+
                                 break;}
 
 // *** ------- LEDGER EXIT ------- *** //
