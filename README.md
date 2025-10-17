@@ -31,13 +31,8 @@ Date	Time	Description	Vendor	Amount
 Screenshots
 
 Main Terminal Screen:
-Insert screenshot of terminal launching with your ASCII art logo here.
+<img width="937" height="470" alt="image" src="https://github.com/user-attachments/assets/5d8bc399-1e4f-421f-aded-151ce0b31f7d" />
 
-Transaction Display:
-Insert screenshot showing a list of transactions in colorful console output.
-
-Typing Effect Demo:
-Insert GIF or screenshot of the typing effect in action.
 
 Usage
 // Example usage
