@@ -43,7 +43,30 @@ public class MarcusMunitions {
         String asciiArt20 = HackerTerminalFX.GREEN + "             ░██▓▓▓▓█▒█▓░                    " + HackerTerminalFX.RESET + HackerTerminalFX.BRIGHT_RED + "  " + HackerTerminalFX.RESET; System.out.println(asciiArt20);
         String asciiArt21 = HackerTerminalFX.GREEN + "                 ░▒░░                        " + HackerTerminalFX.RESET; String asciiArt21A = "       DONATE ORGANS IN THE RECEPTACLE BELOW."; String asciiArt21B = " NO QUESTIONS ASKED."; System.out.print(asciiArt21); HackerTerminalFX.type(asciiArt21A, HackerTerminalFX.BRIGHT_RED, 40); /* Subtitle Delay Effect */ HackerTerminalFX.type(asciiArt21B + "\n", HackerTerminalFX.BOLD_RED, 140);
         System.out.println("\n");
-        System.out.println("Hello, world! \n"); // EDIT HERE!!!!!!!!!!!!!!!!!
+
+        String asciiArt22 = HackerTerminalFX.BRIGHT_YELLOW + "                           ██" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                                                        ▄▄▄▄  ▄    ▄" + HackerTerminalFX.RESET; System.out.println(asciiArt22);
+        String asciiArt23 = HackerTerminalFX.BRIGHT_YELLOW + "                           ██" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                                                       ▄▀  ▀▄ █    █" + HackerTerminalFX.RESET; System.out.println(asciiArt23);
+        String asciiArt24 = HackerTerminalFX.BRIGHT_YELLOW + "                           ██" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                                                       █    █ █▄▄▄▄█" + HackerTerminalFX.RESET; System.out.println(asciiArt24);
+        String asciiArt25 = HackerTerminalFX.BRIGHT_YELLOW + "                           ██" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                                                       █    █ █    █" + HackerTerminalFX.RESET; System.out.println(asciiArt25);
+        String asciiArt26 = HackerTerminalFX.BRIGHT_YELLOW + "                           ██" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                                                        █▄▄█  █    █   █" + HackerTerminalFX.RESET; System.out.println(asciiArt26);
+        String asciiArt27 = HackerTerminalFX.BRIGHT_YELLOW + "              ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                                                         ▀" + HackerTerminalFX.RESET; System.out.println(asciiArt27);
+        String asciiArt28 = HackerTerminalFX.BRIGHT_YELLOW + "              ▒▒▒▒▒▒▒▓▒▒▓▓▓▓▓▓▓▓▒▒▓▒▒▒▒▒▒▒" + HackerTerminalFX.RESET; System.out.println(asciiArt28);
+        String asciiArt29 = HackerTerminalFX.BRIGHT_YELLOW + "              ▓▒▒▒▒▒▒▒▒██▓░░░░▒██▒▒▒▒▒▒▒▒▓" + HackerTerminalFX.RESET; System.out.println(asciiArt29);
+        String asciiArt30 = HackerTerminalFX.BRIGHT_YELLOW + "              █▒▒▒▒▒▒▒▓█▓░░░░░░▓█▓▒▒▒▒▒▒▒█" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                    ▄▄▄  ▄        ▄▄   ▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄    ▄▄   ▄▄▄▄▄" + HackerTerminalFX.RESET; System.out.println(asciiArt30);
+        String asciiArt31 = HackerTerminalFX.BRIGHT_YELLOW + "             █▓▒░     ░▒▓▒▒▒▒▒▒▓▒░      ▒▓█" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                 ▄▀   ▀ █        ██   █   ▀█   █    █   ▀█   ██   █   ▀█" + HackerTerminalFX.RESET; System.out.println(asciiArt31);
+        String asciiArt32 = HackerTerminalFX.BRIGHT_YELLOW + "            █▓▓▓░     ░▒▒▓▓▓▓▓▓▒▒░     ░▒▓▓█" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                █      █       █  █  █▄▄▄█▀   █    █▄▄▄▄▀  █  █  █▄▄▄█▀" + HackerTerminalFX.RESET; System.out.println(asciiArt32);
+        String asciiArt33 = HackerTerminalFX.BRIGHT_YELLOW + "            ▓▓▓▓░     ░▒▓█▒▒▒▒█▓▒░     ░▓▓▓▓" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                █      █       █▄▄█  █        █    █   ▀▄  █▄▄█  █" + HackerTerminalFX.RESET; System.out.println(asciiArt33);
+        String asciiArt34 = HackerTerminalFX.BRIGHT_YELLOW + "             █▓▓▒▒▒▒▒▒▒▒▓█▒▒▒▒█▓▒▒▒▒▒▒▒▒▓▓█" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                  ▀▄▄▄▀ █▄▄▄▄▄ █    █ █        █    █    ▀ █    █ █        █      █      █" + HackerTerminalFX.RESET; System.out.println(asciiArt34);
+        String asciiArt35 = HackerTerminalFX.BRIGHT_YELLOW + "             ▓▓▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓█▒▒▒▒▒▒▒▒▓▓▓▓" + HackerTerminalFX.RESET; System.out.println(asciiArt35);
+        String asciiArt36 = HackerTerminalFX.BRIGHT_YELLOW + "            ▓▓▒ █▒▒▒▒▒▒▓████████▓▒▒▒▒▒▒█ ▒▓▓" + HackerTerminalFX.RESET; System.out.println(asciiArt36);
+        String asciiArt37 = HackerTerminalFX.BRIGHT_YELLOW + "           ▓▓▓▓  ▒▒▒▒▒██▓▓▓▓▓▓▓▓██▒▒▒▒▒  █▓▓▓" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "        ▄▄▄▄▄    ▄      ▄                     ▀                   ▄" + HackerTerminalFX.RESET; System.out.println(asciiArt37);
+        String asciiArt38 = HackerTerminalFX.BRIGHT_YELLOW + "         █▓▓▓█   ▒▒▒▒▒██▒▒▒▒▒▒▒▒██▓▒▒▒▒   █▓▓▓█" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "        █    ▄▄█▄▄    █     ▄▄▄           ▄▄▄   ▄   ▄   ▄▄▄   ▄▄█▄▄         ▄   ▄   ▄▄▄   ▄   ▄" + HackerTerminalFX.RESET; System.out.println(asciiArt38);
+        String asciiArt39 = HackerTerminalFX.BRIGHT_YELLOW + "        ▓▓▓▓█    ▓▒▒▒▓███▓████▓███▓▒▒▒▓    █▓▓▓▓" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "       █      █           █   ▀            █   █   █  █   ▀    █           ▀▄ ▄▀  █▀ ▀█  █   █" + HackerTerminalFX.RESET; System.out.println(asciiArt39);
+        String asciiArt40 = HackerTerminalFX.BRIGHT_YELLOW + "        █▓▓█      ▒▒▓██████████████▓▒▒      █▓▓█" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "       █      █            ▀▀▀▄            █   █   █   ▀▀▀▄    █            █▄█   █   █  █   █" + HackerTerminalFX.RESET; System.out.println(asciiArt40);
+        String asciiArt41 = HackerTerminalFX.BRIGHT_YELLOW + "                  ▓▒▓██████████████▓▒▓" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "               ▄▄█▄▄    ▀▄▄         ▀▄▄▄▀            █   ▀▄▄▀█  ▀▄▄▄▀    ▀▄▄          ▀█    ▀█▄█▀  ▀▄▄▀█    █" + HackerTerminalFX.RESET; System.out.println(asciiArt41);
+        String asciiArt42 = HackerTerminalFX.BRIGHT_YELLOW + "                        ████████" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                                                           █                                ▄▀" + HackerTerminalFX.RESET; System.out.println(asciiArt42);
+        String asciiArt43 = HackerTerminalFX.BRIGHT_YELLOW + "                        ████████" + HackerTerminalFX.RESET + HackerTerminalFX.YELLOW + "                                                         ▀▀                                ▀▀" + HackerTerminalFX.RESET; System.out.println(asciiArt43);
+        String asciiArt44 = HackerTerminalFX.BRIGHT_YELLOW + "                        ████████                                      " + HackerTerminalFX.RESET; System.out.print(asciiArt44); String asciiArt44A = "IT'S UNFORTUNATE YOU'RE NOT DEAD YET... OH, WELL."; HackerTerminalFX.type(asciiArt44A + "\n", HackerTerminalFX.BOLD_RED, 50);
 
 /* -------------------------
 ------- TRANSACTIONS -------
@@ -77,11 +100,11 @@ public class MarcusMunitions {
             // The Home Menu does NOT need to read the file immediately;
             // it works with ArrayList<Transaction> previously made - our stored data.
             // The Home Menu can safely be after closing the reader in order of operations.
-            System.out.println("\n✅ Done reading the file!"); // EDIT HERE!!!!!!!!!!!!!!!!!!!
+            // System.out.println("\n✅ Done reading the file!");
 
         } catch (IOException e) {
             System.out.println("❌ Oops! Could not read the file.");
-            e.printStackTrace(); // Shows error details, if any.
+            e.printStackTrace(); // *** DEBUGGING ***
         } // try
 
 /* ----------------------
@@ -90,6 +113,25 @@ public class MarcusMunitions {
 
 // *** ------- MAIN MENU CONSOLE UI ------- *** //
 
+        System.out.println(" ");
+        System.out.println(" ");
+        String asciiArt45 = HackerTerminalFX.CYAN + "        ░█▀▀░█▀█░█▀▄░░░█▀█░█▀▀░░░▀█▀░█░█░█▀▀░░░█░█░█▀█░█▀▄░█░░░█▀▄░░░░" + HackerTerminalFX.RESET; System.out.println(asciiArt45);
+        String asciiArt46 = HackerTerminalFX.CYAN + "        ░█▀▀░█░█░█░█░░░█░█░█▀▀░░░░█░░█▀█░█▀▀░░░█▄█░█░█░█▀▄░█░░░█░█░░░░" + HackerTerminalFX.RESET; System.out.println(asciiArt46);
+        String asciiArt47 = HackerTerminalFX.CYAN + "        ░▀▀▀░▀░▀░▀▀░░░░▀▀▀░▀░░░░░░▀░░▀░▀░▀▀▀░░░▀░▀░▀▀▀░▀░▀░▀▀▀░▀▀░░▄▀░" + HackerTerminalFX.RESET; System.out.println(asciiArt47);
+        String asciiArt48 = HackerTerminalFX.CYAN + "        ░░░░░█▀▄░█░░░█▀█░░░█▀▄░█░░░█▀█░░░█▀▄░█░░░█▀█░░░" + HackerTerminalFX.RESET; System.out.println(asciiArt48);
+        String asciiArt49 = HackerTerminalFX.CYAN + "        ░░░░░█▀▄░█░░░█▀█░░░█▀▄░█░░░█▀█░░░█▀▄░█░░░█▀█░░░" + HackerTerminalFX.RESET; System.out.println(asciiArt49);
+        String asciiArt50 = HackerTerminalFX.CYAN + "        ░░░░░▀▀░░▀▀▀░▀░▀░░░▀▀░░▀▀▀░▀░▀░░░▀▀░░▀▀▀░▀░▀░▀░" + HackerTerminalFX.RESET; System.out.println(asciiArt50);
+        System.out.println(" ");
+        System.out.println("          I'VE HEARD IT ALL BEFORE.");
+        System.out.println("          ALL I KNOW IS,");
+        System.out.println(" ");
+        String asciiArt51 = HackerTerminalFX.BRIGHT_GREEN + "        ░░░█░█░█▀█░█▀▄░░░▀█▀░█▀▀░░░█▀▀░█▀▄░█▀▀░█▀█░▀█▀" + HackerTerminalFX.RESET; System.out.println(asciiArt51);
+        String asciiArt52 = HackerTerminalFX.BRIGHT_GREEN + "        ░░░█▄█░█▀█░█▀▄░░░░█░░▀▀█░░░█░█░█▀▄░█▀▀░█▀█░░█░" + HackerTerminalFX.RESET; System.out.println(asciiArt52);
+        String asciiArt53 = HackerTerminalFX.BRIGHT_GREEN + "        ░░░▀░▀░▀░▀░▀░▀░░░▀▀▀░▀▀▀░░░▀▀▀░▀░▀░▀▀▀░▀░▀░░▀░" + HackerTerminalFX.RESET; System.out.println(asciiArt53);
+        String asciiArt54 = HackerTerminalFX.BRIGHT_GREEN + "        ░█▀▀░█▀█░█▀▄░░░█▀▄░█░█░█▀▀░▀█▀░█▀█░█▀▀░█▀▀░█▀▀░░░" + HackerTerminalFX.RESET; System.out.println(asciiArt54);
+        String asciiArt55 = HackerTerminalFX.BRIGHT_GREEN + "        ░█▀▀░█░█░█▀▄░░░█▀▄░█░█░▀▀█░░█░░█░█░█▀▀░▀▀█░▀▀█░░░" + HackerTerminalFX.RESET; System.out.println(asciiArt55);
+        String asciiArt56 = HackerTerminalFX.BRIGHT_GREEN + "        ░▀░░░▀▀▀░▀░▀░░░▀▀░░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀░" + HackerTerminalFX.RESET; System.out.println(asciiArt56);
+
         boolean running = true; // "The program is currently running." Controlling the menu.
 
         while (running) { // while loop engages if the program IS running, which is true (above line).
@@ -97,12 +139,17 @@ public class MarcusMunitions {
             // *** AS SOON AS running BECOMES false, THE while loop STOPS AND PROGRAM EXITS ***
 
             // *** MENU ***
-            System.out.println("\n--- HOME SCREEN ---");
+
+            System.out.println(" ");
+            String asciiArt57 = HackerTerminalFX.RED + "╔╦╗╔═╗╔╦╗╔═╗╦  ╦ ╦ ╦  ╔╗╔╔═╗╔╦╗  ╔╗ ╦  ╔═╗╔═╗╔╦╗  ╔╦╗╔═╗╔╗╔╔═╗╦ ╦" + HackerTerminalFX.RESET; System.out.println(asciiArt57);
+            String asciiArt58 = HackerTerminalFX.RED + " ║ ║ ║ ║ ╠═╣║  ║ ╚╦╝  ║║║║ ║ ║   ╠╩╗║  ║ ║║ ║ ║║  ║║║║ ║║║║║╣ ╚╦╝" + HackerTerminalFX.RESET; System.out.println(asciiArt58);
+            String asciiArt59 = HackerTerminalFX.RED + " ╩ ╚═╝ ╩ ╩ ╩╩═╝╩═╝╩   ╝╚╝╚═╝ ╩   ╚═╝╩═╝╚═╝╚═╝═╩╝  ╩ ╩╚═╝╝╚╝╚═╝ ╩" + HackerTerminalFX.RESET; System.out.println(asciiArt59);
+            System.out.println(" ");
             System.out.println("[D] DEPOSIT YOUR BLOOD MONEY");
-            System.out.println("[P] Make Payment");
-            System.out.println("[L] Ledger");
-            System.out.println("[X] Exit" + "\n");
-            System.out.print("Choose an option: ");
+            System.out.println("[P] PAYMENT... IN BLOOD MONEY");
+            System.out.println("[L] CHECK OUT YOUR LEDGER... OF BLOOD MONEY");
+            System.out.println("[X] EXIT. YOU DEFINITELY DID NOT KILL INNOCENTS, AND YOU DEFINITELY DID NOT PROFIT." + "\n");
+            System.out.print("HOW CAN I HELP YOU, CLAPTRAP? ");
 
             // *** READS USER INPUT ***
             String choice = scanner.nextLine();
@@ -114,17 +161,17 @@ public class MarcusMunitions {
 // *** ------- MAIN MENU DEPOSIT ------- *** //
 
                 case "D": // *** DEPOSIT ***
-                    {System.out.print("Enter deposit description: ");
+                    {System.out.print("COMRADE! A DEPOSIT! TELL ME WHY YOU'RE MAKING ME RICH: ");
                     String description = scanner.nextLine();
 
-                    System.out.print("Enter vendor: ");
+                    System.out.print("TELL ME WHO PLEASE: ");
                     String vendor = scanner.nextLine();
 
-                    System.out.print("Enter amount: ");
+                    System.out.print("THE AMOUNT I'M DEFINITELY NOT STEALING FROM YOU: ");
                     double amount = Double.parseDouble(scanner.nextLine());
 
                     LocalDate date = LocalDate.now();
-                    LocalTime time = LocalTime.now();
+                    LocalTime time = LocalTime.now().withNano(0);
 
                     Transactions transactionsMainMenu = new Transactions(
                             date.toString(),
@@ -135,24 +182,24 @@ public class MarcusMunitions {
                     );
 
                     transactions.add(transactionsMainMenu);
-                    System.out.println("\nDEPOSITED BLOOD MONEY SUCCESSFULLY.\n");
+                    System.out.println("\nDEPOSITED BLOOD MONEY SUCCESSFULLY. I PERSONALLY GUARANTEE ITS SAFETY, BUT DO READ THE FINE PRINT. NO REFUNDS.\n");
                     break;}
 
 // *** ------- MAIN MENU PAYMENTS ------- *** //
 
                 case "P": // *** PAYMENT ***
-                    {System.out.print("Enter payment description: ");
+                    {System.out.print("I LOVE CAPITALISM! WHAT DID YOU BUY? ");
                     String paymentDescription = scanner.nextLine();
 
-                    System.out.print("Enter vendor: ");
+                    System.out.print("WHO DID YOU BUY FROM? ");
                     String paymentVendor = scanner.nextLine();
 
-                    System.out.print("Enter amount (positive number): ");
+                    System.out.print("TELL ME THIS POSITIVE NUMBER. ");
                     double paymentAmount;
                     try {
                         paymentAmount = Double.parseDouble(scanner.nextLine().trim()); // PROVIDE NOTES HERE
                     } catch (NumberFormatException nfe) {
-                        System.out.println("Invalid number format. Payment cancelled.");
+                        System.out.println("TOO MANY SYLLABLES! TRY AGAIN! APOLOGIZE!");
                         break; // *** EXITING AND RETURNING TO MENU ***
                     }
 
@@ -185,7 +232,7 @@ public class MarcusMunitions {
                         ioe.printStackTrace();
                     }
 
-                    System.out.println("PAYMENT RECEIVED: " + payment); // *** CONFIRMING ACTION ***
+                    System.out.println("KEEP PANDORA SAFE, SO I CAN KEEP MAKING IT DANGEROUS. CAPITALISM AGAINST THE GREATER GOOD RECEIVED: " + payment); // *** CONFIRMING ACTION ***
                     break;}
 
 /* -------------------
@@ -198,14 +245,22 @@ public class MarcusMunitions {
 
 // *** ------- LEDGER MENU CONSOLE UI ------- *** //
 
+                    System.out.println(" ");
+                    String asciiArt60 = "   MY BUSINESS HAS ONE SIMPLE RULE:"; System.out.println(asciiArt60);
+                    System.out.println(" ");
+                    String asciiArt61 = HackerTerminalFX.RED + "░█▀█░█▀█░░░█▀▄░█▀▀░█▀▀░█░█░█▀█░█▀▄░█▀▀" + HackerTerminalFX.RESET; System.out.println(asciiArt61);
+                    String asciiArt62 = HackerTerminalFX.RED + "░█░█░█░█░░░█▀▄░█▀▀░█▀▀░█░█░█░█░█░█░▀▀█" + HackerTerminalFX.RESET; System.out.println(asciiArt62);
+                    String asciiArt63 = HackerTerminalFX.RED + "░▀░▀░▀▀▀░░░▀░▀░▀▀▀░▀░░░▀▀▀░▀░▀░▀▀░░▀▀▀" + HackerTerminalFX.RESET; System.out.println(asciiArt63);
+                    System.out.println(" ");
+
                     while (ledgerRunning) {
                         System.out.println("\nLEDGER");
-                        System.out.println("A) All Transactions");
-                        System.out.println("D) Deposits");
-                        System.out.println("P) Payments");
-                        System.out.println("R) Reports");
-                        System.out.println("X) Return to Main Menu");
-                        System.out.print("\nINSERT HERE: ");
+                        System.out.println("A) ALL BLOOD MONEY");
+                        System.out.println("D) DEPOSITS");
+                        System.out.println("P) PAYMENTS");
+                        System.out.println("R) REPORTS");
+                        System.out.println("X) RETURN TO MAIN MENU");
+                        System.out.print("\nWHEEL OF MURDER FORTUNE! CHOOSE A LETTER: ");
 
                         String ledgerChoice = scanner.nextLine();
 
@@ -228,7 +283,7 @@ public class MarcusMunitions {
 
                         switch (ledgerChoice.toUpperCase()) {
                             case "A":
-                                {System.out.println("\nTRANSACTIONS DIALGOUE HERE\n");
+                                {System.out.println("\nTHE THINGS YOU CAN AFFORD BY (THEORETICALLY) MURDERING INNOCENTS\n");
 
                                 // CLEAN TABLE DISPLAY
                                 System.out.printf("%-15s %-15s %-30s %-10s %15s%n", // %-LEFT ALIGN + SPACES + %RIGHT ALIGN
@@ -258,7 +313,7 @@ public class MarcusMunitions {
 // *** ------- LEDGER DEPOSITS ------- *** //
 
                             case "D":
-                                {System.out.println("\nDEPOSITS DIALGOUE HERE\n");
+                                {System.out.println("\nNO THEFT HERE INVOLVED\n");
 
                                 // CLEAN TABLE DISPLAY
                                 System.out.printf("%-15s %-15s %-30s %-10s %15s%n", // %-LEFT ALIGN + SPACES + %RIGHT ALIGN
@@ -291,7 +346,7 @@ public class MarcusMunitions {
 // *** ------- LEDGER PAYMENTS ------- *** //
 
                             case "P":
-                                {System.out.println("\nPAYMENTS DIALGOUE HERE\n");
+                                {System.out.println("\nI LOVE CAPITALISM\n");
 
                                 // CLEAN TABLE DISPLAY
                                 System.out.printf("%-15s %-15s %-30s %-10s %15s%n", // %-LEFT ALIGN + SPACES + %RIGHT ALIGN
@@ -326,7 +381,7 @@ public class MarcusMunitions {
 --------------------------- */
 
                             case "R": // *** LEDGER REPORTS ***
-                                {System.out.println("\nREPORTS DIALOGUE HERE");
+                                {//System.out.println("\nREPORTS DIALOGUE HERE");
 
                                     boolean reportsRunning = true;
 
@@ -334,13 +389,13 @@ public class MarcusMunitions {
 
                                     while (reportsRunning) {
                                         System.out.println("\n--- REPORTS MENU ---");
-                                        System.out.println("1) Month to Date");
-                                        System.out.println("2) Previous Month");
-                                        System.out.println("3) Year to Date");
-                                        System.out.println("4) Previous Year");
-                                        System.out.println("5) Search by Vendor");
-                                        System.out.println("X) Back to Ledger Menu");
-                                        System.out.print("\nChoose an option: ");
+                                        System.out.println("1) MONTH TO DATE");
+                                        System.out.println("2) PREVIOUS MONTH");
+                                        System.out.println("3) YEAR TO DATE");
+                                        System.out.println("4) PREVIOUS YEAR");
+                                        System.out.println("5) SEARCH BY VENDOR");
+                                        System.out.println("X) BACK TO LEDGER MENU");
+                                        System.out.print("\nYOU KNOW LETTERS, YES? ");
 
                                         String reportsOptions = scanner.nextLine();
 
@@ -350,7 +405,7 @@ public class MarcusMunitions {
 
                                         switch (reportsOptions.toUpperCase()) {
                                             case "1": {
-                                                System.out.println("\n📅 Month-to-Date Report\n");
+                                                System.out.println("\nMONTH TO DATE REPORTS\n");
 
                                                 LocalDate today = LocalDate.now(); // *** SYSTEM CLOCK ***
                                                 int currentMonth = today.getMonthValue();
@@ -371,7 +426,7 @@ public class MarcusMunitions {
 // *** ------- REPORTS BY PREVIOUS MONTH ------- *** //
 
                                             case "2":{
-                                                System.out.println("\n📅 Previous Month Report\n");
+                                                System.out.println("\nPREVIOUS MONTH REPORTS\n");
 
                                                 LocalDate today = LocalDate.now();
                                                 LocalDate lastMonth = today.minusMonths(1); // *** REDUCES MONTH BY 1 ***
@@ -394,7 +449,7 @@ public class MarcusMunitions {
 // *** ------- REPORTS BY YEAR TO DATE ------- *** //
 
                                             case "3": {
-                                                System.out.println("\n📅 Year-to-Date Report\n");
+                                                System.out.println("\nYEAR TO DATE REPORTS\n");
 
                                                 LocalDate today = LocalDate.now();
                                                 LocalDate startOfYear = LocalDate.of(today.getYear(), 1, 1);
@@ -414,7 +469,7 @@ public class MarcusMunitions {
 // *** ------- REPORTS BY PREVIOUS YEAR ------- *** //
 
                                             case "4":{
-                                                System.out.println("\n📅 Previous Year Report\n");
+                                                System.out.println("\nPREVIOUS YEAR REPORT\n");
 
                                                 LocalDate today = LocalDate.now();
                                                 LocalDate startOfPreviousYear = LocalDate.of(today.getYear() - 1, 1, 1); // *** DEFINES START OF YEAR AS JAN 1 ***
@@ -436,7 +491,7 @@ public class MarcusMunitions {
 // *** ------- VENDOR SEARCH ------- *** //
 
                                             case "5":{
-                                                System.out.print("\nEnter vendor name to search: \n");
+                                                System.out.print("\nTELL ME THE VENDOR: \n");
                                                 String searchVendor = scanner.nextLine().toLowerCase();
 
                                                 printTransactionHeader();
@@ -480,7 +535,7 @@ public class MarcusMunitions {
 
                 case "X":
                     {running = false; // *** MAIN MENU LOOP STOPS ***
-                    System.out.println("Goodbye!");
+                    System.out.println("NOBODY DOES MONEY BETTER THAN MARCUS MUNITIONS. REMEMBER: NO REFUNDS!");
                     break;}
 
                 default:
