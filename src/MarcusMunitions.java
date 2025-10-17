@@ -62,8 +62,8 @@ public class MarcusMunitions {
                 double amount = Double.parseDouble(parts[4]); // 'parts[4]' is still a String.
                 // This conversion to double is REQUIRED because the 'Transactions' constructor
                 // is expecting a 'double' for the amount.
-                Transactions t = new Transactions(parts[0], parts[1], parts[2], parts[3], amount); // *** TRANSACTIONS OBJECT ***
-                transactions.add(t); // Generates simplified, clean code. No more souts!
+                Transactions transaction = new Transactions(parts[0], parts[1], parts[2], parts[3], amount); // *** TRANSACTIONS OBJECT ***
+                transactions.add(transaction); // Generates simplified, clean code. No more souts!
                 // SOUT TESTING PURPOSES ONLY:
                 // System.out.println(t);
             }
@@ -85,7 +85,7 @@ public class MarcusMunitions {
 ------- MAIN MENU -------
 ---------------------- */
 
-// *** ------- CONSOLE UI ------- *** //
+// *** ------- MAIN MENU CONSOLE UI ------- *** //
 
         boolean running = true; // "The program is currently running." Controlling the menu.
 
@@ -104,14 +104,14 @@ public class MarcusMunitions {
             // *** READS USER INPUT ***
             String choice = scanner.nextLine();
 
-// *** ------- OPTIONS (SWITCH CASES) ------- *** //
+// *** ------- MAIN MENU OPTIONS (SWITCH CASES) ------- *** //
 
             switch (choice.toUpperCase()) { // Without '.toUpperCase()', it would be case sensitive.
 
-// *** ------- DEPOSIT ------- *** //
+// *** ------- MAIN MENU DEPOSIT ------- *** //
 
                 case "D": // *** DEPOSIT ***
-                    System.out.print("Enter deposit description: ");
+                    {System.out.print("Enter deposit description: ");
                     String description = scanner.nextLine();
 
                     System.out.print("Enter vendor: ");
@@ -123,7 +123,7 @@ public class MarcusMunitions {
                     LocalDate date = LocalDate.now();
                     LocalTime time = LocalTime.now();
 
-                    Transactions t = new Transactions(
+                    Transactions transactionsMainMenu = new Transactions(
                             date.toString(),
                             time.toString(),
                             description,
@@ -131,14 +131,14 @@ public class MarcusMunitions {
                             amount
                     );
 
-                    transactions.add(t);
+                    transactions.add(transactionsMainMenu);
                     System.out.println("\nDEPOSITED BLOOD MONEY SUCCESSFULLY.\n");
-                    break;
+                    break;}
 
-// *** ------- PAYMENTS ------- *** //
+// *** ------- MAIN MENU PAYMENTS ------- *** //
 
                 case "P": // *** PAYMENT ***
-                    System.out.print("Enter payment description: ");
+                    {System.out.print("Enter payment description: ");
                     String paymentDescription = scanner.nextLine();
 
                     System.out.print("Enter vendor: ");
@@ -183,30 +183,172 @@ public class MarcusMunitions {
                     }
 
                     System.out.println("PAYMENT RECEIVED: " + payment); // *** CONFIRMING ACTION ***
-                    break;
+                    break;}
 
-// *** ------- LEDGER ------- *** //
+/* -------------------
+------- LEDGER -------
+------------------- */
 
                 case "L": // *** LEDGER ***
-                    // insert code here
-                    break;
 
-// *** ------- EXIT ------- *** //
+                { boolean ledgerRunning = true;
+
+// *** ------- LEDGER MENU CONSOLE UI ------- *** //
+
+                    while (ledgerRunning) {
+                        System.out.println("\nLEDHER");
+                        System.out.println("A) All Transactions");
+                        System.out.println("D) Deposits");
+                        System.out.println("P) Payments");
+                        System.out.println("R) Reports");
+                        System.out.println("X) Return to Main Menu");
+                        System.out.print("\nINSERT HERE: ");
+
+                        String ledgerChoice = scanner.nextLine();
+
+// *** ------- LEDGER MENU OPTIONS (SWITCH CASES) ------- *** //
+
+// *** ------- LEDGER TRANSACTIONS ------- *** //
+
+                        switch (ledgerChoice.toUpperCase()) {
+                            case "A":
+                                {System.out.println("\nTRANSACTIONS DIALGOUE HERE\n");
+
+                                // CLEAN TABLE DISPLAY
+                                System.out.printf("%-15s %-15s %-30s %-10s %15s%n", // %-LEFT ALIGN + SPACES + %RIGHT ALIGN
+                                        "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
+
+                                // ITERATION: NEWEST FIRST (LAST ADDED IS LISTED FIRST)
+                                for (int i = transactions.size() - 1; i >= 0; i--) {
+                                    Transactions transactionsLedger = transactions.get(i);
+
+                                    // TRUNCATING TIME STAMPS SO IT DOESN'T BLEED
+                                    String timeLedgerAll = transactionsLedger.getTime();
+                                    if (timeLedgerAll.length() > 15) timeLedgerAll = timeLedgerAll.substring(0, 12);
+
+                                    // TRUNCATING DESCRIPTION SO IT DOESN'T BLEED
+                                    String descripLedgerAll = transactionsLedger.getDescription();
+                                    if (descripLedgerAll.length() > 30) descripLedgerAll = descripLedgerAll.substring(0, 27) + "...";
+
+                                    System.out.printf("%-15s %-15s %-30s %-10s %15s%n",
+                                        transactionsLedger.getDate(),
+                                        timeLedgerAll, // Not using a getter/setter because we created a new String to truncate length
+                                        descripLedgerAll, // Not using a getter/setter because we created a new String to truncate length
+                                        transactionsLedger.getVendor(),
+                                        transactionsLedger.getAmount()
+                                    );
+
+                                }
+
+                                break;}
+
+// *** ------- LEDGER DEPOSITS ------- *** //
+
+                            case "D":
+                                {System.out.println("\nDEPOSITS DIALGOUE HERE\n");
+
+                                // CLEAN TABLE DISPLAY
+                                System.out.printf("%-15s %-15s %-30s %-10s %15s%n", // %-LEFT ALIGN + SPACES + %RIGHT ALIGN
+                                        "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
+
+                                // ITERATION: NEWEST FIRST (LAST ADDED IS LISTED FIRST)
+                                for (int i = transactions.size() - 1; i >= 0; i--) {
+                                    Transactions transactionsLedger = transactions.get(i);
+                                    if (transactionsLedger.getAmount() > 0) { // DEPOSIT = > POSITIVE!
+
+                                        // TRUNCATING TIME STAMPS SO IT DOESN'T BLEED
+                                        String timeLedgerDepo = transactionsLedger.getTime();
+                                        if (timeLedgerDepo.length() > 15)
+                                            timeLedgerDepo = timeLedgerDepo.substring(0, 12);
+
+                                        // TRUNCATING DESCRIPTION SO IT DOESN'T BLEED
+                                        String descripLedgerDepo = transactionsLedger.getDescription();
+                                        if (descripLedgerDepo.length() > 30)
+                                            descripLedgerDepo = descripLedgerDepo.substring(0, 27) + "...";
+
+                                        System.out.printf("%-15s %-15s %-30s %-10s %15.2f%n", // %15.2f%n= RIGHT ALIGN FLOAT/DOUBLE WITH 2 DECIMAL PLACES + NEW LINE
+                                                transactionsLedger.getDate(),
+                                                timeLedgerDepo, // Not using a getter/setter because we created a new String to truncate length
+                                                descripLedgerDepo, // Not using a getter/setter because we created a new String to truncate length
+                                                transactionsLedger.getVendor(),
+                                                transactionsLedger.getAmount());
+                                    }
+
+                                }
+
+                                break;}
+
+// *** ------- LEDGER PAYMENTS ------- *** //
+
+                            case "P":
+                                {System.out.println("\nPAYMENTS DIALGOUE HERE\n");
+
+                                // CLEAN TABLE DISPLAY
+                                System.out.printf("%-15s %-15s %-30s %-10s %15s%n", // %-LEFT ALIGN + SPACES + %RIGHT ALIGN
+                                        "DATE", "TIME", "DESCRIPTION", "VENDOR", "AMOUNT\n");
+
+                                // ITERATION: NEWEST FIRST (LAST ADDED IS LISTED FIRST)
+                                for (int i = transactions.size() - 1; i >= 0; i--) {
+                                    Transactions transactionsLedger = transactions.get(i);
+                                    if (transactionsLedger.getAmount() < 0) { // PAYMENTS = < NEGATIVE!
+
+                                        // TRUNCATING TIME STAMPS SO IT DOESN'T BLEED
+                                        String timeLedgerPayments = transactionsLedger.getTime();
+                                        if (timeLedgerPayments.length() > 15)
+                                            timeLedgerPayments = timeLedgerPayments.substring(0, 12);
+
+                                        // TRUNCATING DESCRIPTION SO IT DOESN'T BLEED
+                                        String descripLedgerPayments = transactionsLedger.getDescription();
+                                        if (descripLedgerPayments.length() > 30)
+                                            descripLedgerPayments = descripLedgerPayments.substring(0, 27) + "...";
+
+                                        System.out.printf("%-15s %-15s %-30s %-10s %15.2f%n", // %15.2f%n= RIGHT ALIGN FLOAT/DOUBLE WITH 2 DECIMAL PLACES + NEW LINE
+                                                transactionsLedger.getDate(),
+                                                timeLedgerPayments, // Not using a getter/setter because we created a new String to truncate length
+                                                descripLedgerPayments, // Not using a getter/setter because we created a new String to truncate length
+                                                transactionsLedger.getVendor(),
+                                                transactionsLedger.getAmount());
+                                    }
+
+                                }
+
+                                break;}
+
+// *** ------- LEDGER REPORTS ------- *** //
+
+                            case "R":
+                                {System.out.println("REPORTS DIALOGUE HERE");
+                                break;}
+
+// *** ------- LEDGER EXIT ------- *** //
+
+                            case "X":
+                                {ledgerRunning = false; // *** EXITS LEDGER MENU ***
+                                break;}
+
+                            default:
+                                System.out.println("Invalid option. Try again!");
+                                break;
+                        }
+                    }
+                    break;} // *** LEDGER LOOP STOPS ***
+
+// *** ------- MAIN MENU EXIT ------- *** //
 
                 case "X":
-                    running = false; // *** HOW THE while loop STOPS ***
+                    {running = false; // *** MAIN MENU LOOP STOPS ***
                     System.out.println("Goodbye!");
-                    break;
+                    break;}
 
                 default:
-                    System.out.println("Invalid option. Try again.");
-            }
-        } // while
+                    {System.out.println("Invalid option. Try again.");}
+            } // *** MAIN MENU LOOP STOPS ***
+        } // main while
 
 // *** ------- CLOSING THE SCANNER ------- *** //
 
         scanner.close();
 
-    } // main
+    } // main method
 
 } // class
